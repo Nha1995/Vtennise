@@ -1,0 +1,49 @@
+.nav {
+    margin-left: 100px;
+    width: 230px;
+    display: table;
+    opacity: 0.95;
+  }
+  
+  .regButton {
+    margin-top: 10px;
+    background-color: rgb(37, 153, 37);
+    color: white;
+    height: 65px;
+    width: 260px;
+  }
+  
+  .first {
+    list-style: none;
+    padding: 0;
+  }
+  .first li {
+    padding: 10px 30px;
+    background: linear-gradient(to left, #3b7cb1 0%, white, #3b7cb1);
+    border-bottom: 1px solid grey;
+    color: black;
+    font-size: 20px;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 5px;
+  }
+  .first li:last-child {
+    border-bottom: none;
+  }
+  
+  .profile-navigation {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .nav-buttons {
+    color: black;
+    width:80%;
+    padding:3px;
+  }
+
+  .nav-buttons:hover {
+    text-decoration:none;
+    background-color:rgb(199, 193, 181);
+    color: black;  
+  }

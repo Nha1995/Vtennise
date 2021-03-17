@@ -1,0 +1,75 @@
+.registration {
+    width: 40%;
+    background-color: white;
+    margin: 0 auto;
+    opacity:0.9;
+    border: 2px solid rgb(97, 89, 255);
+    border-radius:12px;
+    max-height: 450px;
+    padding: 20px;
+    align-items: center;
+}
+
+.registration h1 {
+    color: black;
+}
+
+.form {
+    margin-top: 50px;
+    padding: 20px;
+    width:95;
+    margin: 0 auto;
+}
+
+.regSucces {
+    color: black;
+    margin: 0 auto;
+}
+
+.pair {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-block {    
+    width:100%;
+    height:38px;
+    border-radius:4px;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.birthday-block {
+    width:47.5%;
+    text-align:center;
+}
+
+.daySelect {
+    width:22%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.mounthSelect {
+    width:43%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.yearSelect {
+    width:31%;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.registrationBTN {
+    margin-top: 15px;
+    width: 220px ;
+    height: 50px ;
+}
+.form-label {
+    color: black;
+    margin: 0 auto;
+}

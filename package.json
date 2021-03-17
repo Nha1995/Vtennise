@@ -1,0 +1,22 @@
+{
+  "name": "intennis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nha1995/intennis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nha1995/intennis/issues"
+  },
+  "homepage": "https://github.com/Nha1995/intennis#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

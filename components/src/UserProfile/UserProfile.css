@@ -1,0 +1,46 @@
+.duel-button {
+    position: relative;    
+    right: 768px;
+    top: 20px;
+}
+
+.duel-params {
+    position:relative;
+    right: 360px;
+    top:60px;    
+}
+
+.duel-text-message {
+    color: black;
+    font-size:18px;
+    margin: 0;
+    position: relative;
+    right: 52%;
+}
+
+.duel-waiting-block {
+    position: relative;
+    right:53.5%;
+    top: 20px;
+    width:250px;
+    color: black;
+}
+
+.tennisXL {
+    position: absolute;
+    bottom:90%;
+}
+
+.win-btn {
+    margin-right: 10px;
+    margin-left: 5px;
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.lost-btn {
+    background-color: red;
+    color: white;
+    border: none;
+}

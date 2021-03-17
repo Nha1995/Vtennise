@@ -1,0 +1,49 @@
+.search {
+    align-self: baseline;
+    margin: 30px auto 0 auto;
+    color: black;
+    width:100%;
+}
+
+.search-block {
+    margin: 0 auto;
+    width: 70%;
+    height:50px;
+    border: 1px solid black;
+    border-radius:12px;
+    display: flex;
+    align-items: center;
+    padding:0 20px;
+    margin-bottom: 35px;
+}
+
+.search-input {    
+    border-radius: 5px;
+    outline:none;
+    border: none;
+    height:2rem;
+    width:10rem;
+}
+
+.search-btn {
+    margin-left: 35px;
+    border: 1px solid black;
+    border-radius:10px;
+    padding:7px;
+}
+
+.age-input {
+    border-radius: 5px;
+    outline:none;
+    border: none;
+    height:2rem;
+    width:3rem;
+}
+
+label {
+    margin: 0 20px 0 0;
+}
+
+select {
+    margin-left: 10px;
+}

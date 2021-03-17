@@ -1,0 +1,63 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 30px 30px 7%;
+  margin: 0 auto;
+  background: linear-gradient(45deg, rgb(108, 108, 255), white);
+}
+
+.logo {
+  padding: 5px 0;
+}
+
+.logo__icon {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  bottom: 5px;
+}
+
+.logo-link:hover {
+  text-decoration: none;
+}
+
+.logo__text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  margin-right: 7px;
+  color: rgb(0, 0, 0);
+}
+
+button {
+  display: inline-block;
+}
+
+.navBlock {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navText {
+  color: black;
+  font-size: 17px;
+  font-family: "Play", sans-serif;
+}
+
+.navText:hover {
+  text-decoration: none;
+  color: rgb(87, 0, 187);
+}
+
+.buttons {
+  vertical-align: middle;
+}
+
+.regButton {
+  margin-right: 5px;
+}

@@ -1,0 +1,12 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.rates {
+    width: 70%;
+    margin: 30px auto 0 auto;
+    opacity: 0.92;
+    align-self: baseline;
+}
+
+.rates h1 {
+    color: black;
+}
