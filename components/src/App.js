@@ -12,6 +12,7 @@ import Players from "./Players/Players";
 import Search from "./Search/Search";
 import MyProfile from "./MyProfile/MyProfile";
 import UserProfile from "./UserProfile/UserProfile";
+import History from "./History/History";
 
 class App extends React.Component {
   state = {
@@ -39,6 +40,7 @@ class App extends React.Component {
             <Route path="/search" component={Search} />
             <Route path="/myprofile" component={MyProfile} />
             <Route path="/profile/:id" component={UserProfile} />
+            <Route path="/history" component={History} />
             <Route path="/" component={Carousel} />
           </Switch>
         </div>

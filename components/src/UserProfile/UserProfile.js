@@ -130,48 +130,21 @@ class UserProfile extends React.Component {
     }).then(() => this.getPlayerAndDuelStatus());
   };
 
-  myWinOrLoseHandler = (result) => {
-    let results = {};
-    if (result === "win") {
-      results = {
-        id1: +this.props.profileData.id,
-        id2: +this.props.match.params.id,
-        completed: true,
-        winner: +this.props.profileData.id,
-      };
-    } else {
-      results = {
-        id1: +this.props.profileData.id,
-        id2: +this.props.match.params.id,
-        completed: true,
-        winner: +this.props.match.params.id,
-      };
-    }
-    fetch(`http://localhost:3001/win/duel/${this.state.duelID}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(results),
-    });
-    this.setState({ duelID: null });
-  };
-
   WinOrLoseHandler = (result) => {
     let results = {};
-    if (result === "win") {
+    if (result == "win") {
       results = {
         id1: +this.props.match.params.id,
         id2: +this.props.profileData.id,
         completed: true,
-        winner: +this.props.match.params.id,
+        winner: +this.props.profileData.id ,
       };
     } else {
       results = {
         id1: +this.props.match.params.id,
         id2: +this.props.profileData.id,
         completed: true,
-        winner: +this.props.profileData.id,
+        winner: +this.props.match.params.id,
       };
     }
     fetch(`http://localhost:3001/win/duel/${this.state.duelID}`, {
@@ -204,13 +177,13 @@ class UserProfile extends React.Component {
                 ) : (
                   <>
                     <button
-                      onClick={() => this.myWinOrLoseHandler("win")}
+                      onClick={() => this.WinOrLoseHandler("win")}
                       className="win-btn"
                     >
                       Победа
                     </button>
                     <button
-                      onClick={() => this.myWinOrLoseHandler("lose")}
+                      onClick={() => this.WinOrLoseHandler("lose")}
                       className="lost-btn"
                     >
                       Поражение

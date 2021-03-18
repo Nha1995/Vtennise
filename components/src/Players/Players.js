@@ -2,6 +2,7 @@ import React from "react";
 import "./Players.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Navigation from "../Navigation/Navigation";
 
 class Players extends React.Component {
   state = {
@@ -37,6 +38,10 @@ class Players extends React.Component {
 
   render() {
     return (
+      <>
+      <div className="players-navigation">
+      <Navigation />
+      </ div>
       <div className="players">
         <h1 className="players-title">Игроки</h1>
         {this.state.noPlayers && (
@@ -64,6 +69,7 @@ class Players extends React.Component {
                     <p className="profile-name">Возраст: {user.age}</p>
                     {this.player && <p className="profile-name">Игр:{this.player.games.length}</p>}
                     {this.player && <p className="profile-name">Побед: {this.player.wins}</p>}
+                    {this.player && <p className="profile-name">Очки:{this.player.points}</p>}
                      {this.player && <p className="profile-name">Место в рейтинге:{this.player.rank}</p>}
                   </div>
                 </Link>
@@ -72,6 +78,7 @@ class Players extends React.Component {
           </>
         )}
       </div>
+      </>
     );
   }
 }

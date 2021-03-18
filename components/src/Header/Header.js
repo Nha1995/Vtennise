@@ -33,16 +33,16 @@ class Header extends React.Component {
             <span className="logo__text">intennis.ru</span>
             <img
               className="logo__icon"
-              src="https://raw.githubusercontent.com/Nha1995/Vtennise/main/tennis.png"
+              src="https://raw.githubusercontent.com/Nha1995/intennis/main/images/tennis.png"
             />
           </div>
         </Link>
         <div className="navBlock">
-          <Link className="navText" to="/search">
-            <span>Поиск игрока</span>
-          </Link>
           <Link className="navText" to="/players">
             <span>Игроки</span>
+          </Link>
+          <Link className="navText" to="/">
+            <span>История игр</span>
           </Link>
           <Link className="navText" to="/rates">
             <span>Рейтинги</span>

@@ -12,7 +12,7 @@
 
 .profile-block {
     margin: 0 auto;
-    width: 60%;
+    width: 82%;
     height:70px;
     border: 1px solid black;
     border-radius:10px;
@@ -38,4 +38,9 @@
 .players-title {
     color: black;
     margin-bottom: 40px;
+}
+
+.players-navigation {
+    align-self: baseline;
+    padding-top: 50px;
 }

@@ -32,8 +32,8 @@ class Navigation extends React.Component {
         {this.props.inProfile && (
           <div className="profile-navigation">
             <Link to="/myprofile" className="nav-buttons"><span>Мой профиль</span></Link>
-            <Link to="/" className="nav-buttons"><span>История игр</span></Link>
-            <Link to="/" className="nav-buttons"><span>Подбор соперника</span></Link>
+            <Link to="/history" className="nav-buttons"><span>История игр</span></Link>
+            <Link to="/search" className="nav-buttons"><span>Подбор соперника</span></Link>
           </div>
         )}
       </div>

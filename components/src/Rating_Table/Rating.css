@@ -10,3 +10,8 @@
 .rates h1 {
     color: black;
 }
+
+.rates-navigation {
+    align-self: baseline;
+    padding-top: 50px;
+}
