@@ -37,10 +37,16 @@ button {
 }
 
 .navBlock {
-  width: 50%;
+  width: 37%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-name {
+  width: 100px;
+  margin: 0;
+  color: black;
 }
 
 .navText {
@@ -60,4 +66,10 @@ button {
 
 .regButton {
   margin-right: 5px;
+}
+
+.exit-and-name {
+  display: flex;
+  justify-content: space-between;
+  width:15%;
 }

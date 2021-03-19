@@ -38,10 +38,9 @@
 
 #outerdiv {
   width: 1256px;
-  height: 550px;
+  height: 510px;
   overflow: hidden;
   position: relative;
-  top: 20px;
   right: 30px;
 }
 

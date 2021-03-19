@@ -1,7 +1,6 @@
 .duel-button {
     position: relative;    
     right: 750px;
-    top: 20px;
 }
 
 .duel-params {
@@ -20,8 +19,7 @@
 
 .duel-waiting-block {
     position: relative;
-    right:53.5%;
-    top: 20px;
+    right:715px;
     width:250px;
     color: black;
 }

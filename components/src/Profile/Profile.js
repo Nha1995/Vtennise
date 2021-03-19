@@ -3,10 +3,20 @@ import "./Profile.css";
 import Navigation from "../Navigation/Navigation";
 import { connect } from "react-redux";
 
-class Profile extends React.Component {  
-
+class Profile extends React.Component {
   render() {
-      const {name , surname, age, birthday, mail} = this.props;
+    const {
+      name,
+      surname,
+      age,
+      birthday,
+      mail,
+      wins,
+      points,
+      games,
+      rank,
+    } = this.props;
+    console.log("PROPSI", this.props);
     return (
       <div className="my-profile">
         <Navigation />
@@ -19,15 +29,18 @@ class Profile extends React.Component {
             <p>
               {name} {surname}
             </p>
-            <p className="my-profile-data-text">
-              E-mail: {mail}
-            </p>
-            <p className="my-profile-data-text">
-              Дата рождения: {birthday}
-            </p>
-            <p className="my-profile-data-text">
-              Возраст: {age}
-            </p>
+            <p className="my-profile-data-text">E-mail: {mail}</p>
+            <p className="my-profile-data-text">Дата рождения: {birthday}</p>
+            <p className="my-profile-data-text">Возраст: {age}</p>
+            <div className="my-info-block">
+              <h2>Статистика</h2>
+              <div className="player-info-params">
+                <p>Сыграно игр: {games}</p>
+                <p>Побед: {wins}</p>
+                <p>Очков: {points}</p>
+                <p>Ранк:<b>{rank}</b></p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -12,6 +12,7 @@ for (let i = 1950; i < 2022; i++) {
 class UserProfile extends React.Component {
   state = {
     user: {},
+    player: {},
     duelStatus: false,
     duelMessage: "",
     accepted: false,
@@ -21,11 +22,23 @@ class UserProfile extends React.Component {
   };
 
   getUser = async () => {
-    const response = await fetch(
-      `http://localhost:3001/user/${this.props.match.params.id}`
-    );
-    const data = await response.json();
-    this.setState({ user: data }, () => this.getPlayerAndDuelStatus());
+    console.log("get", this.props.match.params.id)
+    const response = await fetch(`http://localhost:3001/user/${this.props.match.params.id}`)
+    const userData = await response.json();
+    console.log("USERI DATAN", userData);
+    fetch(`http://localhost:3001/player/${this.props.match.params.id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const playerData = {
+          wins: data.player.wins,
+          points: data.player.points,
+          games: data.player.games.length,
+          rank: data.player.rank,
+        };
+        this.setState({ user: userData, player: playerData }, () =>
+          this.getPlayerAndDuelStatus()
+        );
+      });
   };
 
   getPlayerAndDuelStatus = async () => {
@@ -78,7 +91,7 @@ class UserProfile extends React.Component {
     this.getUser();
   }
 
-  duelHandler = () => {
+  duelHandler = async () => {
     try {
       const id1 = +this.props.profileData.id;
       const id2 = +this.props.match.params.id;
@@ -91,7 +104,7 @@ class UserProfile extends React.Component {
         winner: "no winner",
         completed: false,
       };
-      fetch("http://localhost:3001/duels", {
+      await fetch("http://localhost:3001/duels", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -137,7 +150,7 @@ class UserProfile extends React.Component {
         id1: +this.props.match.params.id,
         id2: +this.props.profileData.id,
         completed: true,
-        winner: +this.props.profileData.id ,
+        winner: +this.props.profileData.id,
       };
     } else {
       results = {
@@ -158,10 +171,16 @@ class UserProfile extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log("SMOTRY SYUDA", this.state, this.props);
     return (
       <>
-        <Profile {...this.state.user} />
+        <Profile
+          {...this.state.user}
+          wins={this.state.player.wins}
+          rank={this.state.player.rank}
+          games={this.state.player.games}
+          points={this.state.player.points}
+        />
         {this.state.duelID !== null ? (
           this.state.myDuel ? (
             this.state.accepted ? (

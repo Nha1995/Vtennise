@@ -1,0 +1,94 @@
+.footer-block {
+    width: 100%;
+    background-color:rgb(63, 61, 61);
+    height: 150px;
+    display: flex;
+}
+
+.footerInfo__socials {
+    display:flex;
+    padding: 0 0 0 122px;
+    align-items: center;
+    height:90%;
+}
+
+.footerInfo__instagram {
+    width:53px;
+    height:33px;
+    padding-right:18px;
+}
+
+.footerInfo__facebook {
+    width:52px;
+    height:32px;
+    padding-right:21px;
+}
+
+.footerInfo__vkontakte {
+    width:55px;
+    height:35px;
+    padding-right:25px;
+}
+
+.footerInfo__whatsapp {
+    width:34px;
+    height:34px;
+    padding:0;
+    cursor:pointer;
+}
+
+.footerInfo__synchronization {
+    font-size:18px;
+    display: inline-block;
+    position: relative;
+    right:215px;
+    top: 60px;
+    color: white;
+    width:250px;
+}
+
+.footerContacts {
+    padding-top: 20px;
+    margin-left: 450px;
+}
+
+.footerContacts__phone {
+    display: flex;
+    align-items: center;    
+}
+
+.footerContacts__phoneLogo {
+    width:40px;
+    height:40px;
+    padding: 0 22px 20px 0;
+}
+
+.footerContacts__phoneNumber {
+    font-size: 20px;
+    Line-height: 25px;
+    display: inline;
+    margin:0 0 20px 0;
+}
+
+.footerContacts__mail {
+    display: flex;
+    align-items: center;
+    
+}
+
+.footerContacts__mailLogo {
+    width:50px;
+    height:20px;
+    padding-right: 22px;
+}
+
+.footerContacts__mailAddress {
+    font-size: 20px; 
+    Line-height: 25px;
+    display: inline; 
+    margin:0;
+}
+
+.footerContacts__synchronization {
+    margin-top: 25px;
+}

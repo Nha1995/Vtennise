@@ -13,6 +13,8 @@ import Search from "./Search/Search";
 import MyProfile from "./MyProfile/MyProfile";
 import UserProfile from "./UserProfile/UserProfile";
 import History from "./History/History";
+import Footer from "./Footer/Footer";
+import Notifications from "./Notifications/Notifications";
 
 class App extends React.Component {
   state = {
@@ -41,9 +43,11 @@ class App extends React.Component {
             <Route path="/myprofile" component={MyProfile} />
             <Route path="/profile/:id" component={UserProfile} />
             <Route path="/history" component={History} />
+            <Route path="/notifications" component={Notifications} />            
             <Route path="/" component={Carousel} />
           </Switch>
         </div>
+        <Footer />
       </div>
     );
   }

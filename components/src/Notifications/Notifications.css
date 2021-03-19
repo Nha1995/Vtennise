@@ -1,0 +1,55 @@
+.challenge-player-block {
+
+}
+
+.not-main-block {
+    width: 100%;
+    margin: 0 200px 0 0;
+    align-self: baseline;
+}
+
+.notif-title {
+    color: black;
+}
+
+.notif-not-challenge {
+    color: black;
+}
+
+.notif-href {
+    color: black;
+    padding:3px;
+    border: 1px solid black;
+}
+
+.notif-href:hover {
+    background-color:rgb(199, 193, 181);
+    color: black;  
+}
+
+.notif-name-surname {
+    color: black;
+    margin-right: 15px;
+}
+
+.notif-challenge {
+    color: red;
+}
+
+.player-block-notif {
+    color: black;
+}
+
+.head-block-notif {
+    color: black;
+}
+
+.notif-table {
+    width: 100%;
+    margin-top:40px;
+    background-color: white;
+    border: 3px solid rgb(77, 77, 253);
+    border-spacing: 0 15px;
+	border-collapse: separate;
+    opacity:0.9;
+}

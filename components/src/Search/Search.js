@@ -1,6 +1,8 @@
 import React from "react";
 import "./Search.css";
 import Navigation from "../Navigation/Navigation";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 let days = [],
   rates = [],
@@ -8,17 +10,17 @@ let days = [],
 for (let i = 5; i < 71; i++) {
   days.push(i);
 }
-for (let i = 0; i < 750; i = i + 20) {
+for (let i = 0; i < 750; i = i + 25) {
   rates.push(i);
 }
-for (let i = 0; i <= 150; i = i + 5) {
+for (let i = 0; i <= 50; i++) {
   gamesCount.push(i);
 }
 
 class Search extends React.Component {
   state = {
     name: null,
-    ageFrom: 5,
+    ageFrom: null,
     rateFrom: null,
     games: null,
     players: [],
@@ -58,20 +60,9 @@ class Search extends React.Component {
   };
 
   searchHandler = () => {
-    let params = {
-      name: this.state.name,
-      ageFrom: this.state.ageFrom,
-      rateFrom: this.state.rateFrom,
-      games: this.state.games,
-    };
-
-    fetch("http://localhost:3001/search", {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",        
-      },
-      body : JSON.stringify(params)
-    })
+    fetch(
+      `http://localhost:3001/search?name=${this.state.name}&age=${this.state.ageFrom}&rate=${this.state.rateFrom}&games=${this.state.games}`
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log("ВОТ ЧТО ПОЛУЧИЛОСЬ", data);
@@ -142,8 +133,30 @@ class Search extends React.Component {
               Искать
             </button>
           </div>
-          {this.state.players.length === 0 && (
-            <p className="no-players-text">{this.state.noPlayers}</p>
+          {this.state.players.length > 0 ? (
+            this.state.players.map((player) => {
+              return (
+                <Link to={player.id === +this.props.profileData.id ? "/myprofile" : `/profile/${player.id}`}>
+                  <div className="profile-block">
+                    <img
+                      className="profile-image"
+                      src="https://sun9-57.userapi.com/impf/JtiWFpaI-NAfjCy9CljGpKUKEZcGUV42ivCg9g/6_Jq3k-PDr4.jpg?size=520x520&quality=96&sign=e19a68068f82ab5f137f8b4191a42add&type=album"
+                    />
+                    <p className="profile-name">
+                      {player.name} {player.surname}
+                    </p>
+                    <p className="profile-name">Возраст: {player.age}</p>
+                    <p className="profile-name">Игр:{player.games}</p>
+                    <p className="profile-name">Очки:{player.points}</p>
+                    <p className="profile-name">
+                      Место в рейтинге:{player.rank}
+                    </p>
+                  </div>
+                </Link>
+              );
+            })
+          ) : (
+            <></>
           )}
         </div>
       </>
@@ -151,4 +164,14 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+  return {
+    inProfile: state.inProfile,
+    profileData: state.profileData,
+  };
+};
+
+const functionFromConnect = connect(mapStateToProps);
+const updatedInProfile = functionFromConnect(Search);
+
+export default updatedInProfile;

@@ -42,13 +42,13 @@ class Login extends React.Component {
                 inProfile:true,
               }
             });
-            // console.log("LOGIN",login)
             store.dispatch({
               type:"PROFILEDATA",
               payload:{
                 profileData:login,
               }
             });
+            this.props.history.push("/myprofile");
           }
         }
       };
@@ -67,7 +67,7 @@ class Login extends React.Component {
             <input onChange={(e)=>this.dataHandler(e,"mail")} value={this.state.mail} className="loginInput" placeholder="E-mail" type="text"></input>
             {this.state.passwordMessage && <p className="error-message-password">{this.state.passwordMessage}</p>}
             <input onChange={(e)=>this.dataHandler(e,"password")} value={this.state.password} className="passwordInput" placeholder="Password" type="password"></input>
-            <Link to={this.state.inProfile? "/myprofile" : "/login"}><Button onClick={() =>this.loginHandler()} className="loginBTN" variant="outline-light">Войти</Button></Link>
+            <button onClick={() =>this.loginHandler()} className="loginBTN">Войти</button>
         </div>
         <Link to="/registration">
           <Button className="regButton1" variant="outline-success">

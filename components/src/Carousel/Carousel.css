@@ -1,11 +1,8 @@
 .carousel {
-    width: 70%;
-    margin: 0 auto;
+    width: 661px;
+    height:395px;
+    margin-left: 50px;
     opacity:0,8;
-}
-
-.img-height {
-    height:400px;
 }
 
 .carousel-main {

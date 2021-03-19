@@ -3,6 +3,7 @@ import "./Header.css";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import store from "../redux/store";
+import { connect } from "react-redux";
 
 class Header extends React.Component {
   state = {
@@ -18,12 +19,12 @@ class Header extends React.Component {
 
   exitHandler = () => {
     store.dispatch({
-      type:"INPROFILE",
-      payload:{
-        inProfile:false,
-      }
+      type: "INPROFILE",
+      payload: {
+        inProfile: false,
+      },
     });
-  }
+  };
 
   render() {
     return (
@@ -41,9 +42,6 @@ class Header extends React.Component {
           <Link className="navText" to="/players">
             <span>Игроки</span>
           </Link>
-          <Link className="navText" to="/">
-            <span>История игр</span>
-          </Link>
           <Link className="navText" to="/rates">
             <span>Рейтинги</span>
           </Link>
@@ -58,13 +56,37 @@ class Header extends React.Component {
           </Link>
         )}
         {this.state.inProfile && (
-          <Link to="/login">
-            <Button onClick={()=>this.exitHandler()} variant="outline-primary">Выход</Button>
-          </Link>
+          <div className="exit-and-name">
+            <p className="header-name">
+              <b>
+                {this.props.profileData.surname}
+                <br />
+                {this.props.profileData.name}
+              </b>
+            </p>
+            <Link to="/login">
+              <Button
+                onClick={() => this.exitHandler()}
+                variant="outline-primary"
+              >
+                Выход
+              </Button>
+            </Link>
+          </div>
         )}
       </div>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    inProfile: state.inProfile,
+    profileData: state.profileData,
+  };
+};
+
+const functionFromConnect = connect(mapStateToProps);
+const updatedInProfile = functionFromConnect(Header);
+
+export default updatedInProfile;

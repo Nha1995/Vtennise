@@ -12,12 +12,12 @@ let users = [
   {
     id: 0,
     age: 25,
-    birthday: "05.12.1995",
+    birthday: "08.11.1992",
     mail: "admin@mail.ru",
-    name: "Нарек",
+    name: "Александр",
     password: "admin",
-    phone: "79208999988",
-    surname: "Акопян",
+    phone: "+79035335673",
+    surname: "Медведев",
   },
   {
     id: 1,
@@ -26,11 +26,58 @@ let users = [
     mail: "test@mail.ru",
     name: "Виктория",
     password: "test",
-    phone: "79058794256",
+    phone: "+79058794256",
     surname: "Николаева",
+  },
+  {
+    id: 2,
+    age: 36,
+    birthday: "07.07.1984",
+    mail: "ivanovivan@yandex.ru",
+    name: "Иван",
+    password: "ivanov",
+    phone: "+79538448542",
+    surname: "Иванов",
+  },
+  {
+    id: 3,
+    age: 30,
+    birthday: "19.06.1990",
+    mail: "speckors999@gmail.com",
+    name: "Максим",
+    password: "admin",
+    phone: "+79294233349",
+    surname: "Коростылев",
+  },
+  {
+    id: 4,
+    age: 37,
+    birthday: "09.05.1983",
+    mail: "andreevand2908@ro.ru",
+    name: "Андрей",
+    password: "admin",
+    phone: "+79102321456",
+    surname: "Андреев",
+  },
+  {
+    id: 5,
+    age: 27,
+    birthday: "08.09.1993",
+    mail: "profind-user@mail.ru",
+    name: "Антон",
+    password: "admin",
+    phone: "+79994367534",
+    surname: "Пресняков",
   },
 ];
 let players = [
+  {
+    id: 0,
+    games: [],
+    wins: 0,
+    points: 0,
+    rank: "-",
+  },
   {
     id: 1,
     games: [],
@@ -39,7 +86,28 @@ let players = [
     rank: "-",
   },
   {
-    id: 0,
+    id: 2,
+    games: [],
+    wins: 0,
+    points: 0,
+    rank: "-",
+  },
+  {
+    id: 3,
+    games: [],
+    wins: 0,
+    points: 0,
+    rank: "-",
+  },
+  {
+    id: 4,
+    games: [],
+    wins: 0,
+    points: 0,
+    rank: "-",
+  },
+  {
+    id: 5,
     games: [],
     wins: 0,
     points: 0,
@@ -47,7 +115,7 @@ let players = [
   },
 ];
 let duels = [];
-let userid = 2;
+let userid = 6;
 let duelid = 0;
 
 //POST
@@ -140,7 +208,7 @@ app.get("/duels", (req, res) => {
 });
 
 app.get("/user/:id", (req, res) => {
-  const user = users[req.params.id];
+  const user = users.find((user) => user.id === +req.params.id);
   res.status(200).send(user);
 });
 
@@ -171,16 +239,16 @@ app.get("/players/ratings", (req, res) => {
   res.status(200).send(result);
 });
 
-app.put("/search", (req, res) => {
+app.get("/search", (req, res) => {
   let filterUsers = [];
   let filterPlayers = [];
   let result = [];
 
-  if (req.body.name) {
-    if (req.body.name.indexOf(" ") > -1) {
-      let name = req.body.name.split(" ")[0];
-      let surname = req.body.name.split(" ")[1];
-      const i = surname.length - 1;
+  if (req.query.name !== "null") {
+    if (req.query.name.indexOf(" ") > -1) {
+      let name = req.query.name.split(" ")[0];
+      let surname = req.query.name.split(" ")[1];
+      const i = surname.length;
 
       users.forEach((user) => {
         if (user.name === name && user.surname.substr(0, i) == surname) {
@@ -188,42 +256,97 @@ app.put("/search", (req, res) => {
         }
       });
     } else {
-      const i = req.body.name.length - 1;
-
+      const i = req.query.name.length;
+      console.log(i);
       users.forEach((user) => {
-        if (user.name.substr(0, i) == req.body.name) {
+        console.log(user.name.substr(0, i));
+        if (user.name.substr(0, i) == req.query.name) {
           filterUsers.push(user);
         }
       });
     }
     if (filterUsers.length == 0) {
-      res.status(404);
+      res.status(404).send([]);
+      return;
     }
   }
 
-  if (req.body.ageFrom) {
-    filterUsers = filterUsers.filter((user) => user.age >= req.body.ageFrom);
+  if (+req.query.age !== "null") {
     if (filterUsers.length == 0) {
-      res.status(404);
+      filterUsers = users.filter((user) => user.age >= +req.query.age);
+    } else {
+      filterUsers = filterUsers.filter((user) => user.age >= +req.query.age);
+    }
+    if (filterUsers.length == 0) {
+      res.status(404).send([]);
+      return;
     }
   }
 
-  if (req.body.rateFrom) {
+  if (req.query.rate !== "null") {
     filterPlayers = players.filter(
-      (player) => player.points >= req.body.rateFrom
+      (player) => player.points >= +req.query.rate
     );
     if (filterPlayers.length == 0) {
-      res.status(404);
+      res.status(404).send([]);
+      return;
     }
   }
 
-  if (req.body.games) {
-    filterPlayers = filterPlayers.filter(
-      (player) => player.games.length >= req.body.games
-    );
+  if (req.query.games !== "null") {
     if (filterPlayers.length == 0) {
-      res.status(404);
+      filterPlayers = players.filter(
+        (player) => player.games.length >= +req.query.games
+      );
+    } else {
+      filterPlayers = filterPlayers.filter(
+        (player) => player.games.length >= +req.query.games
+      );
     }
+    if (filterPlayers.length == 0) {
+      res.status(404).send([]);
+      return;
+    }
+  }
+
+  if (filterPlayers.length == 0) {
+    for (let i = 0; i < players.length; i++) {
+      for (let j = 0; j < filterUsers.length; j++) {
+        if (players[i].id == filterUsers[j].id) {
+          result.push({
+            name: filterUsers[j].name,
+            surname: filterUsers[j].surname,
+            age: filterUsers[j].age,
+            games: players[i].games.length,
+            wins: players[i].wins,
+            points: players[i].points,
+            rank: players[i].rank,
+          });
+        }
+      }
+    }
+    res.status(200).send(result);
+    return;
+  }
+
+  if (filterUsers.length == 0) {
+    for (let i = 0; i < filterPlayers.length; i++) {
+      for (let j = 0; j < users.length; j++) {
+        if (filterPlayers[i].id == users[j].id) {
+          result.push({
+            name: users[j].name,
+            surname: users[j].surname,
+            age: users[j].age,
+            games: filterPlayers[i].games.length,
+            wins: filterPlayers[i].wins,
+            points: filterPlayers[i].points,
+            rank: filterPlayers[i].rank,
+          });
+        }
+      }
+    }
+    res.status(200).send(result);
+    return;
   }
 
   for (let i = 0; i < filterPlayers.length; i++) {
@@ -278,7 +401,7 @@ app.get("/history/:id", (req, res) => {
 });
 
 app.get("/player/:id", (req, res) => {
-  const player = players[+req.params.id];
+  const player = players.find((player) =>player.id=== +req.params.id);
   const duelsWithThisPlayer = duels.filter((duel) => {
     if (
       (duel.id1 === +req.params.id || duel.id2 === +req.params.id) &&
@@ -291,6 +414,34 @@ app.get("/player/:id", (req, res) => {
     player: player,
     duels: duelsWithThisPlayer,
   });
+});
+
+app.get("getplayer/:id", (req, res) => {
+  const player = players.find((player) => player.id === +req.params.id);
+  res.status(200).send(player);
+});
+
+app.get("/notifications/:id", (req, res) => {
+  const duelsWithThisPlayer = duels.filter((duel) => {
+    if (duel.id2 === +req.params.id && duel.completed === false) {
+      return duel;
+    }
+  });
+  if (duelsWithThisPlayer.length !== 0) {
+    let names = [];
+    duelsWithThisPlayer.forEach((duel) => {
+      const user = users.find((user) => user.id === duel.id1);
+      names.push({
+        id: user.id,
+        name: user.name,
+        surname: user.surname,
+        phone: user.phone
+      });
+    });
+    res.status(200).send(names);
+  } else {
+    res.status(204).send([]);
+  }
 });
 
 app.get("/duel/:id", (req, res) => {

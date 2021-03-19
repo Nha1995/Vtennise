@@ -1,15 +1,22 @@
 const initialState = {
   inProfile: false,
-  profileData:{},
+  profileData: {},
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
     case "INPROFILE": {
-      return {
-        inProfile: action.payload.inProfile,
-        profileData:state.profileData
-      };
+      if (action.payload.inProfile) {
+        return {
+          inProfile: action.payload.inProfile,
+          profileData: state.profileData,
+        };
+      } else {
+        return {
+          inProfile: action.payload.inProfile,
+          profileData: {},
+        };
+      }
     }
     case "PROFILEDATA": {
       return {

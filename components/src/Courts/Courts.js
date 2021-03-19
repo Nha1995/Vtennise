@@ -1,6 +1,5 @@
 import React from "react";
 import "./Courts.css";
-import { Link } from "react-router-dom";
 
 class Courts extends React.Component {
   render() {

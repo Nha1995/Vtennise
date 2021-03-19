@@ -15,32 +15,32 @@ class CarouselCl extends React.Component {
           <Carousel>
             <Carousel.Item interval={1500}>
               <img
-                className="d-block w-100 img-height"
-                src="https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg):focal(1123x407:1125x405)/origin-imgresizer.eurosport.com/2021/02/09/2989001-61335748-2560-1440.jpg"
+                className="d-block w-100"
+                src="https://raw.githubusercontent.com/Nha1995/intennis/main/images/Maria-Sharapova001%20(1).jpg"
                 alt="First slide"
               />
               <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>
-                  Nulla vitae elit libero, a pharetra augue mollis interdum.
-                </p>
+              <h3>Maria Sharapova</h3>
+                <p>US OPEN 2012</p>
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={1500}>
               <img
                 className="d-block w-100 img-height"
-                src="https://img.gazeta.ru/files3/857/10494857/RIAN_00919905.HR.ru-pic4_zoom-1500x1500-36700.jpg"
+                src="https://raw.githubusercontent.com/Nha1995/intennis/main/images/Maria-Sharapova019.jpg"
                 alt="Second slide"
               />
               <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <h3>Maria Sharapova</h3>
+                <p>
+                  Roland Garros 2011
+                </p>                
               </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item interval={1500}>
               <img
                 className="d-block w-100 img-height"
-                src="https://tennishead.net/wp-content/uploads/2020/02/Rafael-Nadal-hulking-up-at-US-Open.jpg"
+                src="https://raw.githubusercontent.com/Nha1995/intennis/main/images/full%20.jpg"
                 alt="Third slide"
               />
               <Carousel.Caption>
